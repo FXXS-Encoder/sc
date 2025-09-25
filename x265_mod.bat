@@ -1,0 +1,4 @@
+@echo off
+VSPipe.exe -c y4m "%~f1" - | x265_mod.exe  -D 10 --crf %2 --preset placebo --level-idc 5.1 --ctu 32 --rd 4 --subme 5 --ref 6 --merange=32 --me 3 --qg-size 8 --weightb --no-rect --no-amp --rskip 0 --aud --range limited --repeat-headers --tu-intra-depth 4 --tu-inter-depth 4 --range limited --no-open-gop --no-sao --no-early-skip --min-keyint=1 --rc-lookahead 100 --no-cutree --bframes 16 --vbv-bufsize 160000 --vbv-maxrate 160000 --colorprim bt709 --transfer bt709 --colormatrix bt709 --deblock -3:-3 --no-strong-intra-smoothing --ipratio 1.3 --pbratio 1.2 --qcomp 0.65 --aq-mode 3 --aq-strength 1 --psy-rd 1.00 --psy-rdoq 1.00 --hist-scenecut --cbqpoffs -2 --crqpoffs -2 --output "%~p1%~n1.hevc" --y4m - 2>&1) | powershell -ExecutionPolicy Bypass -NoProfile -Command  "$input | Tee-Object -FilePath %~p1%~n1.log  | Out-String -Stream"
+:end
+pause
