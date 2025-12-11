@@ -6,7 +6,7 @@ goto case%3
 goto done
 
 :case0
-  set POOLS="+,-,-，,-"
+  set POOLS="+,-,-,-"
 goto done
 
 :case1
